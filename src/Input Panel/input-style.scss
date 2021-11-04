@@ -1,0 +1,62 @@
+.total-input-panel {
+  background: rebeccapurple;
+  border-radius: 10px 10px 0 0;
+  border-style: solid solid none solid;
+  margin: 0 20px 0 20px;
+
+  .input-info {
+    padding: 12px 0 2px 17px;
+  }
+
+  .input-panel {
+    display: flex;
+    height: 32px;
+    padding: 5px 12px 10px 12px;
+    // background: blueviolet;
+  
+    input {
+      width: 100%;
+      border: 1px solid var(--white);
+      border-radius: 10px;
+      text-indent: 10px;
+      background: var(--dark-back);
+      color: white;
+      font-size: 18px;
+      font-family: 'Gemunu Libre', sans-serif;
+  
+      &:focus {
+        outline: none;
+        border: 2px solid var(--white);
+        border-radius: 10px;
+      }
+    }
+  
+    button {
+      border: 1px solid var(--dark-back);
+      border-radius: 10px;
+  
+      &:hover {
+        background-color: var(--orange);
+      }
+  
+      &:disabled {
+        background-color: var(--white);
+      }
+  
+      &:not(:last-child) {
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+/* Disabling the scolling wheel in the input field */
+
+input[type="number"] {
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  -moz-appearance: textfield;
+}

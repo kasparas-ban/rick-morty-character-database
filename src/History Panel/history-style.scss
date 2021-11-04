@@ -1,0 +1,83 @@
+:root {
+  --orange:#FFC600;
+}
+
+.total-history-panel {
+  background: crimson;
+  border-radius: 0 0 10px 10px;
+  border-style: none solid solid solid;
+  margin: 0 20px 0 20px;
+
+  .history-top {
+    display: flex;
+
+    .history-label {
+      padding: 5px 0 5px 15px;
+      font-size: 18px;
+      // background: cadetblue;
+    }
+
+    .clear-history {
+      margin: 4px 0 0 8px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--orange);
+      // background: violet;
+    
+      &:hover {
+        color: var(--yellow);
+      }
+    }
+  }
+
+  .history-panel {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 11px 10px 11px;
+    // background: chartreuse;
+
+    .history-img {
+      width: 35px;
+      height: 35px;
+      margin-top: 5px;
+      border-radius: 10px;
+      position: relative;
+      margin-left: 4px;
+      border: solid 1px #ccc;
+      padding: 2px;
+      background-clip: content-box;
+      background-color: #ccc;
+    
+      img {
+        width: 85%;
+        height: 85%;
+        border-radius: 8px;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto auto;
+      }
+    
+      &:hover {
+        background: var(--orange);
+        cursor: pointer;
+      }
+    
+      &.selected {
+        background: var(--orange);
+        border-color: var(--orange);
+      }
+    }
+  
+    .history-img:hover {
+      border-color: var(--orange);
+    }
+  }
+  
+  .hidden {
+    display: none;
+  }
+}

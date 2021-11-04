@@ -1,0 +1,68 @@
+.info-panel {
+  background: brown;
+  border-radius: 10px;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  img {
+    box-sizing: border-box;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    margin: 20px;
+    width: 80%;
+  }
+
+  .no-image {
+    background-color: #555;
+    margin: 20px;
+  }
+
+  .person-icon {
+    background-color: #555;
+  }
+  
+  .side-info {
+    margin: 20px 20px 20px 5px;
+    line-height: 25px;
+
+    .name {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .table-container {
+
+      table {
+        width: 100%;
+        table-layout: fixed;
+
+        .td-center {
+          text-align: center;
+        }
+      }
+    }
+  }
+  
+  // .char-info {
+  //   margin: 4px 0;
+  // }
+}
+
+@media screen and (max-width: 480px) {
+  .info-panel {
+    grid-template-columns: 1fr;
+
+    img {
+      height: 140px;
+      width: 140px;
+      margin: 20px auto 20px auto;
+    }
+
+    .side-info {
+      
+    }
+
+  }
+}

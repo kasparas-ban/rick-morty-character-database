@@ -1,0 +1,142 @@
+$starFieldWidth: 2560;
+$starFieldHeight: 2560;
+$starStartOffset: 600px;
+
+$starOneScrollDuration: 100s;
+$starTwoScrollDuration: 125s;
+$starThreeScrollDuration: 175s;
+$numStarOneStars: 2000;
+$numStarTwoStars: 700;
+$numStarThreeStars: 250;
+$numShootingStars: 10;
+
+html {
+  height: 100%;
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+.container {
+  z-index: -5;
+  display: block;
+  position: absolute; //relative
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #020107 0%, #201b46 100%);
+}
+
+@function create-stars($n, $color) {
+  $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #{$color}";
+
+  @for $i from 2 through $n {
+    $stars: "#{$stars} , #{random($starFieldWidth)}px #{random($starFieldHeight)}px #{$color}";
+  }
+
+  @return unquote($stars);
+}
+
+@mixin star-template($numStars, $starSize, $scrollSpeed, $animation, $fadeAnim, $color) {
+  z-index: -10;
+  width: $starSize;
+  height: $starSize;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: create-stars($numStars, $color);
+  animation: $animation $scrollSpeed linear infinite, $fadeAnim $scrollSpeed linear infinite;
+}
+
+@mixin shooting-star-template($numStars, $starSize, $speed) {
+  z-index: -9;
+  width: $starSize;
+  height: $starSize + 80px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1));
+  animation: animShootingStar $speed linear infinite;
+}
+
+.stars1 {
+  @include star-template($numStarOneStars, 1px, $starOneScrollDuration, animStar, fadeInOut1, "#FFF");
+}
+.stars1-copy {
+  @include star-template($numStarOneStars, 1px, $starOneScrollDuration, animStarCopy, fadeInOut1, "#FFF");
+  transform: translateX(-1000px) translateY(-1000px);
+}
+.stars2 {
+  @include star-template($numStarTwoStars, 2px, $starTwoScrollDuration, animStar, fadeInOut2, "#FFF");
+}
+.stars2-copy {
+  @include star-template($numStarTwoStars, 2px, $starTwoScrollDuration, animStarCopy, fadeInOut2, "#FFF");
+  transform: translateX(-1000px) translateY(-1000px);
+}
+.stars3 {
+  @include star-template($numStarThreeStars, 3px, $starThreeScrollDuration, animStar, fadeInOut3, "#FFF");
+}
+.stars3-copy {
+  @include star-template($numStarThreeStars, 3px, $starThreeScrollDuration, animStarCopy, fadeInOut3, "#FFF");
+  transform: translateX(-1000px) translateY(-1000px);
+}
+
+.shooting-stars {
+  @include shooting-star-template($numShootingStars, 5px, 10s);
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px) translateX(0px);
+  }
+  to {
+    transform: translateY(-#{$starFieldHeight}px) translateX(-#{$starFieldWidth}px);
+  }
+}
+
+@keyframes animStarCopy {
+  from {
+    transform: translateY(#{$starFieldHeight - 1000}px) translateX(#{$starFieldWidth - 1000}px);
+  }
+  to {
+    left: 1000px;
+    right: 1000px;
+  }
+}
+
+@keyframes fadeInOut1 {
+  0% {opacity:0;}
+  3% {opacity:1;}
+  90% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@keyframes fadeInOut2 {
+  0% {opacity:0;}
+  2% {opacity:1;}
+  93% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@keyframes fadeInOut3 {
+  0% {opacity:0;}
+  2% {opacity:1;}
+  95% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@keyframes animShootingStar {
+  from {
+    transform: translateY(0px) translateX(0px) rotate(-45deg);
+    opacity: 1;
+    height: 5px;
+  }
+  to {
+    transform: translateY(-#{$starFieldHeight}px) translateX(-#{$starFieldWidth}px) rotate(-45deg);
+    opacity: 1;
+    height: 800px;
+  }
+};
