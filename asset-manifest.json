@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/rick-morty-character-database/static/css/main.3857890c.chunk.css",
+    "main.js": "/rick-morty-character-database/static/js/main.51a38e9e.chunk.js",
+    "main.js.map": "/rick-morty-character-database/static/js/main.51a38e9e.chunk.js.map",
+    "runtime-main.js": "/rick-morty-character-database/static/js/runtime-main.a4fdbb2d.js",
+    "runtime-main.js.map": "/rick-morty-character-database/static/js/runtime-main.a4fdbb2d.js.map",
+    "static/js/2.12adb285.chunk.js": "/rick-morty-character-database/static/js/2.12adb285.chunk.js",
+    "static/js/2.12adb285.chunk.js.map": "/rick-morty-character-database/static/js/2.12adb285.chunk.js.map",
+    "index.html": "/rick-morty-character-database/index.html",
+    "static/css/main.3857890c.chunk.css.map": "/rick-morty-character-database/static/css/main.3857890c.chunk.css.map",
+    "static/js/2.12adb285.chunk.js.LICENSE.txt": "/rick-morty-character-database/static/js/2.12adb285.chunk.js.LICENSE.txt",
+    "static/media/GitHub-Icon.0c389a0b.svg": "/rick-morty-character-database/static/media/GitHub-Icon.0c389a0b.svg",
+    "static/media/Rick_and_Morty_logo.bd09ff38.png": "/rick-morty-character-database/static/media/Rick_and_Morty_logo.bd09ff38.png",
+    "static/media/person_icon.58c6c9a1.svg": "/rick-morty-character-database/static/media/person_icon.58c6c9a1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4fdbb2d.js",
+    "static/js/2.12adb285.chunk.js",
+    "static/css/main.3857890c.chunk.css",
+    "static/js/main.51a38e9e.chunk.js"
+  ]
+}
