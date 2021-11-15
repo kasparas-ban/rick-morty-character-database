@@ -1,14 +1,37 @@
-.lds-ellipsis {
-  background-color: gray;
-  border-radius: 10px;
-  display: inline-block;
-  position: relative;
-  width: 120px;
-  height: 120px;
+:root {
+  --main-panel-color: #252759;
 }
-.lds-ellipsis div {
+
+/* img {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: white;
+  margin: 20px;
+  width: 80%;
+
+  padding: 3px;
+  background-clip: content-box;
+} */
+
+.lds-ellipsis {
+  background-color: var(--main-panel-color);
+  /* border-radius: 10px;
+  display: inline-block; */
+  /* position: relative; */
+  /* box-sizing: border-box; */
+  /* width: 80%; */
+  aspect-ratio: 1/1;
+  /* margin: 20px; */
+
+  /* padding: 3px;
+  background-clip: content-box;
+  border-style: solid;
+  border-color: white; */
+}
+/* .lds-ellipsis div {
   position: absolute;
-  top: 52px;
+  top: 45%;
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -54,4 +77,4 @@
   100% {
     transform: translate(24px, 0);
   }
-}
+} */

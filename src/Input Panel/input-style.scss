@@ -1,18 +1,30 @@
+:root {
+  --main-panel-color: #252759;
+  --button-color: #8DBF41;
+  --button-color-light: #bfdf8f;
+  --button-color-dark: #69a313;
+}
+
 .total-input-panel {
-  background: rebeccapurple;
+  background: var(--main-panel-color);
   border-radius: 10px 10px 0 0;
   border-style: solid solid none solid;
   margin: 0 20px 0 20px;
+  font-size: 1em;
+
+  // box-shadow:
+  //   0 0 1px 1px rgb(251, 255, 16),
+  //   0 0 10px 4px rgb(88, 173, 7);
+  // position: relative;
 
   .input-info {
-    padding: 12px 0 2px 17px;
+    padding: 12px 17px 2px 17px;
   }
 
   .input-panel {
     display: flex;
     height: 32px;
     padding: 5px 12px 10px 12px;
-    // background: blueviolet;
   
     input {
       width: 100%;
@@ -34,17 +46,43 @@
     button {
       border: 1px solid var(--dark-back);
       border-radius: 10px;
+      background: var(--button-color);
+      color: white;
   
       &:hover {
-        background-color: var(--orange);
+        background-color: var(--button-color-dark);
       }
   
       &:disabled {
-        background-color: var(--white);
+        background-color: var(--button-color-light);
       }
   
       &:not(:last-child) {
         margin: 0 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .total-input-panel {
+    margin: 0 10px 0 10px;
+
+    .input-info {
+      padding: 4px 10px 2px 12px;
+      font-size: 14px;
+    }
+
+    .input-panel {
+      height: 26px;
+      padding: 2px 12px 6px 12px;
+
+      input {
+        border-radius: 6px;
+      }
+
+      button {
+        border-radius: 6px;
       }
     }
   }

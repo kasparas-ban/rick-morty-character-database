@@ -1,9 +1,14 @@
+:root {
+  --main-panel-color: #252759;
+}
+
 .info-panel {
-  background: brown;
+  background: var(--main-panel-color);
   border-radius: 10px;
   border-style: solid;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  // position: relative;
 
   img {
     box-sizing: border-box;
@@ -12,24 +17,30 @@
     border-color: white;
     margin: 20px;
     width: 80%;
+
+    padding: 3px;
+    background-clip: content-box;
   }
 
   .no-image {
-    background-color: #555;
+    background-color: var(--main-panel-color);
     margin: 20px;
   }
 
   .person-icon {
-    background-color: #555;
+    background-color: var(--main-panel-color);
   }
   
   .side-info {
     margin: 20px 20px 20px 5px;
-    line-height: 25px;
 
     .name {
       font-size: 30px;
       margin-bottom: 10px;
+    }
+
+    .gray-name {
+      opacity: 0.6;
     }
 
     .table-container {
@@ -38,30 +49,57 @@
         width: 100%;
         table-layout: fixed;
 
+        td {
+          vertical-align: top;
+        }
+
         .td-center {
-          text-align: center;
+          text-align: left;
+        }
+
+        .td-label {
+          opacity: 0.6;
         }
       }
     }
   }
-  
-  // .char-info {
-  //   margin: 4px 0;
-  // }
 }
+
+// .info-panel:before {
+//   content: "";
+//   position: absolute;
+//   border-radius: 10px;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   box-shadow:
+//     0 0 2px 2px rgb(251, 255, 16),
+//     0 0 12px 6px rgb(88, 173, 7);
+//   z-index: -10;
+// }
 
 @media screen and (max-width: 480px) {
   .info-panel {
     grid-template-columns: 1fr;
 
     img {
-      height: 140px;
-      width: 140px;
-      margin: 20px auto 20px auto;
+      height: 120px;
+      width: 120px;
+      margin: 10px auto 0 auto;
     }
 
     .side-info {
-      
+      margin: 5px 20px 5px 20px;
+
+      .name {
+        font-size: 28px;
+        margin-bottom: 6px;
+      }
+
+      table {
+        font-size: 14px;
+      }
     }
 
   }

@@ -1,5 +1,6 @@
 :root {
   --dark-back:#020D3B;
+  --main-panel-color: #252759;
   --dark-blue:#072AC8;
   --blue:#1E96FC;
   --light-blue:#A2D6F9;
@@ -8,10 +9,14 @@
   --white:#fff;
 }
 
+$main-padding: 10px;
+$main-margin: 10px;
+
 body {
   background: var(--dark-back);
   color: white;
-  font-family: 'Gemunu Libre', sans-serif;
+  // font-family: 'Gemunu Libre', sans-serif;
+  font-family: 'Acme', sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,15 +28,15 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: $main-padding 0 $main-padding 0;
 }
 
 .logo-panel {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: $main-margin;
 }
 
 .database-panel {
-  background-color: var(--blue);
   border-radius: 20px;
   width: 440px;
   margin: auto;
@@ -44,10 +49,9 @@ body {
 
 .logo-database {
   font-size: 40px;
-  text-align: right;
+  text-align: center;
   text-transform: uppercase;
-  margin-right: 30px;
-  margin-top: -25px;
+  margin-top: -30px;
 }
 
 @media screen and (max-width: 610px) {
@@ -56,25 +60,40 @@ body {
   }
 }
 
-
 @media screen and (max-width: 480px) {
   .database-panel {
-    width: 90%;
+    width: auto;
+  }
+
+  .logo-database {
+    font-size: 22px;
   }
 }
 
-// @media screen and (max-height: 610px) {
-//   .main-container {
-//     height: 100%;
-//     overflow-y: scroll;
+@media screen and (max-height: 730px) {
+  .database-panel {
+    padding-bottom: 20px;
+  }
+}
 
-//     &::-webkit-scrollbar {
-//       display: none;
-//     }
+@media screen and (max-height: 730px) {
+  
+  .main-container {
+    margin: $main-margin auto $main-margin auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-//     // -ms-overflow-style: none;
+    height: 100%;
+    overflow-y: scroll;
 
-//     // /* IE and Edge */
-//     // scrollbar-width: none;
-//   }
-// }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .database-panel {
+      padding-bottom: 20px;
+    }
+  }
+}

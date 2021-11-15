@@ -2,38 +2,37 @@ import "./info-style.scss";
 import personIcon from "../assets/person_icon.svg";
 
 const InfoTable = ({ charInfo }) => {
-  console.log('INFO: ', charInfo)
   return (
   <div className="table-container">
     <table>
     <tbody>
       <tr>
-        <td>ID</td>
-        <td className="td-center">{charInfo?.id || "???"}</td>
+        <td className="td-label">ID</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.id || "???"}</td>
       </tr>
       <tr>
-        <td>Status</td>
-        <td className="td-center">{charInfo?.status || "???"}</td>
+        <td className="td-label no-info">Status</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.status || "???"}</td>
       </tr>
       <tr>
-        <td>Species</td>
-        <td className="td-center">{charInfo?.species || "???"}</td>
+        <td className="td-label">Species</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.species || "???"}</td>
       </tr>
       <tr>
-        <td>Type</td>
-        <td className="td-center">{charInfo?.type || "???"}</td>
+        <td className="td-label">Type</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.type || "???"}</td>
       </tr>
       <tr>
-        <td>Gender</td>
-        <td className="td-center">{charInfo?.gender || "???"}</td>
+        <td className="td-label">Gender</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.gender || "???"}</td>
       </tr>
       <tr>
-        <td>Origin</td>
-        <td className="td-center">{charInfo?.origin?.name || "???"}</td>
+        <td className="td-label">Origin</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.origin?.name || "???"}</td>
       </tr>
       <tr>
-        <td>Location</td>
-        <td className="td-center">{charInfo?.location?.name || "???"}</td>
+        <td className="td-label">Location</td>
+        <td className={`td-center${charInfo?.id ? "" : " td-label"}`}>{charInfo?.location?.name || "???"}</td>
       </tr>
       </tbody>
     </table>
@@ -86,7 +85,7 @@ const InfoPanel = ({ char, isLoaded }) => {
     <div className="info-panel">
       {displayImage}
       <div className="side-info">
-        <div className="name">{displayName}</div>
+        <div className={`name${displayInfo ? "" : " gray-name"}`}>{displayName}</div>
         <InfoTable charInfo={char} />
         {/* <div className="char-info">{displayInfo}</div>
         <div className="char-info">

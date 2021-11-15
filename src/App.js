@@ -7,6 +7,8 @@ import InputPanel from "./Input Panel/InputPanel";
 import Background from "./Background";
 import InfoPanel from "./Info Panel/InfoPanel";
 import HistoryPanel from "./History Panel/HistoryPanel";
+import NewBackground from "./NewBackground";
+import BottomPanel from "./Bottom Panel/BottomPanel";
 
 const App = () => {
   const [input, setInput] = useState("");
@@ -68,7 +70,7 @@ const App = () => {
 
   return (
     <>
-      {/* <NewBackground /> */}
+      <NewBackground />
       {/* <Background /> */}
       <div className="main-container">
         <div className="logo-panel">
@@ -90,6 +92,7 @@ const App = () => {
           />
         </div>
       </div>
+      <BottomPanel />
     </>
   );
 };

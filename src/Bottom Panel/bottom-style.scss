@@ -1,0 +1,30 @@
+.bottom-panel {
+  display: flex;
+  justify-content: center;
+  
+  position: fixed;
+  bottom: 0;
+  width: 100%; 
+  margin-bottom: 5px;
+
+  div {
+    margin: auto 5px auto 0;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.icon:hover {
+  filter: brightness(0) invert(0.5);
+  cursor: pointer;
+}
+
+@media screen and (max-height: 730px) {
+  .bottom-panel {
+    display: none;
+  }
+}
