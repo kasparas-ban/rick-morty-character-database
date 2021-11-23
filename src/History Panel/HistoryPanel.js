@@ -1,7 +1,6 @@
 import "./history-style.scss";
 
 const HistoryPanel = ({ cache, handleClick, selectedId, cleanCache }) => {
-  // console.log(cache);
   return (
     <div className="total-history-panel">
       <div className="history-top">

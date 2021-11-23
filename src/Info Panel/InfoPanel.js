@@ -40,60 +40,40 @@ const InfoTable = ({ charInfo }) => {
 };
 
 const InfoPanel = ({ char, isLoaded }) => {
-  const { name, id, status, species, type, gender, origin, location, image } = char;
-  const info = `#${id}, ${status}, ${species}, ${gender}.`;
-
   let displayImage;
   let displayName;
-  let displayOrigin;
-  let displayLocation;
-  let displayInfo;
+
   switch (isLoaded) {
     case 'initial':
-      displayImage = <img className="person-icon" src={personIcon} />;
+      displayImage = <img className="person-icon" src={personIcon} alt="Placeholder" />;
       displayName = "???";
-      displayInfo = "";
-      displayOrigin = "";
-      displayLocation = "";
       break;
     case 'waiting':
-      displayImage = (
-        <div className="lds-ellipsis">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      );
+      // displayImage = (
+      //   <div className="lds-ellipsis">
+      //     <div></div>
+      //     <div></div>
+      //     <div></div>
+      //     <div></div>
+      //   </div>
+      // );
+      displayImage = <img className="person-icon" src={personIcon} alt="Placeholder" />;
       displayName = "???";
-      displayInfo = "";
-      displayOrigin = "";
-      displayLocation = "";
       break;
     case 'loaded':
-      displayImage = <img src={image} alt={name} />;
-      displayName = name;
-      displayInfo = info;
-      displayOrigin = origin.name;
-      displayLocation = location.name;
+      displayImage = <img src={char.image} alt={char.name} />;
+      displayName = char.name;
       break;
     default:
-      throw Error('the value of "isLoaded" is incorrect.');
+      throw Error();
   }
 
   return (
     <div className="info-panel">
       {displayImage}
       <div className="side-info">
-        <div className={`name${displayInfo ? "" : " gray-name"}`}>{displayName}</div>
+        <div className={`name${displayName ? "" : " gray-name"}`}>{displayName}</div>
         <InfoTable charInfo={char} />
-        {/* <div className="char-info">{displayInfo}</div>
-        <div className="char-info">
-          {displayOrigin}
-        </div>
-        <div className="char-info">
-          {displayLocation}
-        </div> */}
       </div>
     </div>
   );

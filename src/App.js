@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import rickAndMortyLogo from "./assets/Rick_and_Morty_logo.png";
 import personIcon from "./assets/person_icon.svg";
-import useFetch from "./UseFetch";
+import useFetch from "./useFetch";
 import useLocalStorage from "./useLocalStorage";
 import InputPanel from "./Input Panel/InputPanel";
 import Background from "./Background";
@@ -12,10 +12,13 @@ import BottomPanel from "./Bottom Panel/BottomPanel";
 
 const App = () => {
   const [input, setInput] = useState("");
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState("initial"); // initial, waiting, loaded
+  const [status, setStatus] = useState({
+    isLoaded: 'initial', // initial, loaded, waiting
+    networkError: false,
+    errorMessage: null,
+  });
   const [charInfo, setCharInfo] = useState({
-    name: "???",
+    name: null,
     id: null,
     status: null,
     species: null,
@@ -23,19 +26,18 @@ const App = () => {
     gender: null,
     origin: null,
     location: null,
-    image: personIcon,
+    image: null,
   });
   const [cache, setCache] = useLocalStorage([]);
-  // console.log("Cache", cache);
   const [cacheSelected, setCacheSelected] = useState(null);
 
   const HandleRefetch = (num) => {
     useFetch(
       num,
       setInput,
-      setIsLoaded,
       setCharInfo,
-      setError,
+      status,
+      setStatus,
       cache,
       setCache,
       setCacheSelected
@@ -47,7 +49,7 @@ const App = () => {
     setCacheSelected(selectedChar);
     setCharInfo(selectedChar);
     setInput(selectedChar.id);
-    setIsLoaded("loaded");
+    setStatus({ ...status, isLoaded: 'loaded' });
   };
 
   const cleanCache = () => {
@@ -65,7 +67,7 @@ const App = () => {
       image: personIcon,
     });
     setInput("");
-    setIsLoaded("initial");
+    setStatus({ ...status, isLoaded: 'initial' });
   };
 
   return (
@@ -74,16 +76,14 @@ const App = () => {
       {/* <Background /> */}
       <div className="main-container">
         <div className="logo-panel">
-          <img className="logo" src={rickAndMortyLogo} />
+          <img className="logo" src={rickAndMortyLogo} alt="Rick & Morty Logo" />
           <div className="logo-database">Character Database</div>
         </div>
         <div className="database-panel">
-          <InputPanel
-            input={input}
-            setInput={setInput}
+          <InputPanel input={input} setInput={setInput}
             handleRefetch={HandleRefetch}
           />
-          <InfoPanel char={charInfo} isLoaded={isLoaded} />
+          <InfoPanel char={charInfo} isLoaded={status.isLoaded} />
           <HistoryPanel
             cache={cache}
             selectedId={cacheSelected && cacheSelected.id}

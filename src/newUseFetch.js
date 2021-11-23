@@ -1,30 +1,23 @@
 const useFetch = (
   charNum,
-  setInput,
-  setIsLoaded,
-  setCharInfo,
-  setError,
-  cache,
-  setCache,
-  setCacheSelected
+  state,
+  dispatch
 ) => {
+  
   if (charNum > 671 || charNum < 1 || !Number.isInteger(charNum)) {
     charNum = parseInt(charNum, 10);
     charNum = charNum > 671 ? 671 : charNum;
     charNum = charNum < 1 ? 1 : charNum;
-    setInput(charNum);
+    dispatch({ type: 'inputError' });
   }
 
-  const existingChar = cache.find((char) => char.id === charNum);
+  const existingChar = state.cache.find((char) => char.id === charNum);
   if (existingChar) {
-    console.log("loading from cache");
-    setCharInfo(existingChar);
-    setCacheSelected(existingChar);
-    setIsLoaded('loaded');
+    dispatch({ type: 'loadFromCache' });
     return;
   }
 
-  setIsLoaded('waiting');
+  dispatch({ type: 'setIsLoading' });
   setTimeout(function () {
     fetch(`https://rickandmortyapi.com/api/character/${charNum}`)
       .then((res) => res.json())

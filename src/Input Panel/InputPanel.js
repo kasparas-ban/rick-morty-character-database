@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./input-style.scss";
 
 const MAX_CHAR = 671;
